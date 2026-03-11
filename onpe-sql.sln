@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "onpe-sql", "onpe-sql\onpe-sql.csproj", "{F50BBC5E-FE27-48EF-BDC0-1688691A81EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F50BBC5E-FE27-48EF-BDC0-1688691A81EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F50BBC5E-FE27-48EF-BDC0-1688691A81EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F50BBC5E-FE27-48EF-BDC0-1688691A81EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F50BBC5E-FE27-48EF-BDC0-1688691A81EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {94DC485D-4CB0-44A6-BE7F-133D3B0CAF17}
+	EndGlobalSection
+EndGlobal
