@@ -4,10 +4,9 @@ namespace onpe_sql.Controllers
 {
     public class ActasController : Controller
     {
-        public IActionResult verActas()
+        public IActionResult verActasUbigeo()
         {
-
-            return View("Participacion");
+            return View();
         }
 
         public IActionResult verActa()

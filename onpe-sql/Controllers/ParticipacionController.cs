@@ -16,10 +16,6 @@ namespace onpe_sql.Controllers
         {
             return View();
         }
-        public IActionResult verActasUbigeo()
-        {
-            return View();
-        }
         public IActionResult verParticipacion()
         {
             return View();
@@ -42,7 +38,7 @@ namespace onpe_sql.Controllers
 
             ViewBag.Ambito = ambito;
             ViewBag.DatoNivel1 = detalle;
-            ViewBag.EtiquetaNivel1 = (ambito == "NACIONAL") ? "DEPARTAMENTO" : "CONTINENTE";
+            ViewBag.EtiquetaNivel1 = (ambito == "NACIONAL") ? "Departamento" : "Continente";
             ViewBag.TituloColumna = (ambito == "NACIONAL") ? "PROVINCIA" : "PAÍS";
             ViewBag.Accion = "verDistrito";
 
@@ -55,8 +51,8 @@ namespace onpe_sql.Controllers
             ViewBag.Ambito = ambito;
             ViewBag.DatoNivel1 = nivel1Anterior;
             ViewBag.DatoNivel2 = detalle;
-            ViewBag.EtiquetaNivel1 = (ambito == "NACIONAL") ? "DEPARTAMENTO" : "CONTINENTE";
-            ViewBag.EtiquetaNivel2 = (ambito == "NACIONAL") ? "PROVINCIA" : "PAÍS";
+            ViewBag.EtiquetaNivel1 = (ambito == "NACIONAL") ? "Departamento" : "Continente";
+            ViewBag.EtiquetaNivel2 = (ambito == "NACIONAL") ? "Provincia" : "País";
             ViewBag.TituloColumna = (ambito == "NACIONAL") ? "DISTRITO" : "CIUDAD";
             ViewBag.Accion= "verProvincia";
 
