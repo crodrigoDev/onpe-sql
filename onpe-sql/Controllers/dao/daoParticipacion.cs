@@ -19,13 +19,13 @@ namespace onpe_sql.Controllers.dao
 
         internal List<Participacion> getVerDepartamento(string detalle)
         {
-            _db.Sentencia($"EXEC usp_getVotosDepartamento {detalle}");
+            _db.Sentencia($"EXEC usp_getVotosDepartamento '{detalle}'");
             return new Participacion().getList(_db.getRegistros());
         }
 
         internal List<Participacion> getVerProvincia(string detalle)
         {
-            _db.Sentencia($"EXEC usp_getVotosProvincia {detalle}");
+            _db.Sentencia($"EXEC usp_getVotosProvincia '{detalle}'");
             return new Participacion().getList(_db.getRegistros());
         }
     }
