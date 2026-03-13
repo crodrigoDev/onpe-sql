@@ -15,6 +15,7 @@ namespace onpe_sql
 
             builder.Services.AddScoped<clsBD>();
             builder.Services.AddScoped<daoParticipacion>();
+            builder.Services.AddScoped<daoUbigeo>();
 
             var app = builder.Build();
 

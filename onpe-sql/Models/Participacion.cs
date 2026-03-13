@@ -10,7 +10,6 @@ namespace onpe_sql.Models
         public int TA { get; set; }
         public string PTA { get; set; }
         public int EH { get; set; }
-        public bool Valido { get; set; }
 
         public Participacion() { }
 
@@ -21,8 +20,6 @@ namespace onpe_sql.Models
 
         private void setRegistro(string[] aRegistro)
         {
-            Valido = aRegistro != null;
-            if (!Valido) return;
 
             detalle = aRegistro[0];
             TV = int.Parse(aRegistro[1]);

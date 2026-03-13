@@ -28,6 +28,7 @@ namespace onpe_sql.Controllers.bd
 
             using SqlConnection cn = new SqlConnection(_cadenaConexion);
             using SqlCommand cmd = new SqlCommand(_queryActual, cn);
+            cmd.CommandTimeout = 120;
             using SqlDataAdapter da = new SqlDataAdapter(cmd);
 
             da.Fill(dt);
@@ -39,7 +40,7 @@ namespace onpe_sql.Controllers.bd
             DataTable dt = getDataTable();
             if (dt.Rows.Count == 0) return null;
 
-            return System.Array.ConvertAll(dt.Rows[0].ItemArray, x => x.ToString().Trim());
+            return System.Array.ConvertAll(dt.Rows[0].ItemArray, x => x?.ToString().Trim() ?? "");
         }
 
         internal string[][] getRegistros()
@@ -50,7 +51,7 @@ namespace onpe_sql.Controllers.bd
             string[][] mRegistros = new string[dt.Rows.Count][];
             foreach (DataRow dr in dt.Rows)
             {
-                mRegistros[i++] = System.Array.ConvertAll(dr.ItemArray, x => x.ToString().Trim());
+                mRegistros[i++] = System.Array.ConvertAll(dr.ItemArray, x => x?.ToString().Trim() ?? "");
             }
             return mRegistros;
         }
