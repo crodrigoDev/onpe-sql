@@ -28,7 +28,7 @@ namespace onpe_sql.Controllers.bd
 
             using SqlConnection cn = new SqlConnection(_cadenaConexion);
             using SqlCommand cmd = new SqlCommand(_queryActual, cn);
-            cmd.CommandTimeout = 120;
+            cmd.CommandTimeout = 200;
             using SqlDataAdapter da = new SqlDataAdapter(cmd);
 
             da.Fill(dt);
