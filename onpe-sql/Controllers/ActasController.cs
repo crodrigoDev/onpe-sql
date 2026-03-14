@@ -1,21 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using onpe_sql.Controllers.dao;
+using onpe_sql.Models;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace onpe_sql.Controllers
 {
     public class ActasController : Controller
     {
         private readonly daoUbigeo _dao;
-        public ActasController(daoUbigeo dao)
+        private readonly daoActas _daoA;
+        public ActasController(daoUbigeo dao, daoActas daoA)
         {
             _dao = dao;
+            _daoA = daoA;
         }
         public IActionResult verActasUbigeo()
         {
             return View();
         }
 
-        [HttpGet]
         public JsonResult verDepartamentos(string ambito)
         {
             var inicio = ambito == "P" ? 1 : 26;
@@ -30,15 +33,21 @@ namespace onpe_sql.Controllers
             return Json(lista);
         }
 
-        public IActionResult verDistritos(int id)
+        public JsonResult verDistritos(int id)
         {
             var lista = _dao.getDistritos(id);
             return Json(lista);
         }
-        public IActionResult verLocales(int id)
+        public JsonResult verLocales(int id)
         {
             var lista = _dao.getLocales(id);
             return Json(lista);
+        }
+
+        public IActionResult _GruposVotacion(int id)
+        {
+            var lista = _daoA.getGrupos(id);
+            return PartialView("_GruposVotacion",lista);
         }
     }
 }

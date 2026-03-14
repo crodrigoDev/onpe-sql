@@ -1,0 +1,59 @@
+﻿@model List<onpe_sql.Models.GruposVotacion>
+@{
+}
+
+<div class="col-xs-12 pbot30">
+    <p class="subtitle">LISTADO DE MESAS</p>
+    <div id="page-wrap">
+        <table class="table17" cellspacing="0">
+            <tbody>
+                @foreach (var filaDeMesas in Model.Chunk(10))
+                {
+                <tr>
+                    @foreach (var mesa in filaDeMesas)
+                    {
+                        <td bgcolor="#C1C1C1" onclick="verDetalleMesa('@mesa.id')" style="cursor:pointer">
+                            <a href="#">@mesa.id</a>
+                        </td>
+                    }
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="col-xs-12 cont-recto oculto-leyenda-color-fondo-mesas">
+    <div class="col-md-4"><img src="~/images/procesacon.jpg"> Procesada con imagen</div>
+    <div class="col-md-4"><img src="~/images/procesasin.jpg"> Procesada sin imagen</div>
+    <div class="col-md-4"><img src="~/images/sinprocesa.jpg"> Sin procesar</div>
+</div>
+
+<div class="row pbot30">
+    <div class="col-lg-8 centered">
+        <div class="col-xs-12 col-md-12 col-lg-12">
+            <table>
+                <tbody>
+                    <tr>
+                        <td colspan="10">
+                            <div class="conte-paginador">
+                                <span class="paginador-txt">Total de mesas: 18</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="10">
+                            Página:
+                            <ul class="pagination">
+                                <li class="active"><a class="paginador-n1">1</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

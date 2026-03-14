@@ -33,6 +33,13 @@
         limpiarDesde("local");
         if (id !== "") obtenerLocales();
     });
+
+    $("#actas_ubigeo").change(function () {
+        var id = $(this).val();
+
+        limpiarDesde("")
+        if (id !== "") obtenerGruposVotacion();
+    });
 });
 
 // Funciones de ayuda 
@@ -50,11 +57,13 @@ function actualizarLabels(valor) {
 
 function limpiarDesde(nivel) {
     const opcionDefault = "<option value=''>--SELECCIONE--</option>";
+    $("#GruposVotacion").empty();
     switch (nivel){
-        case "departamento": $("#cdgoDep, #cdgoProv, #cdgoDist, #actas_ubigeo").empty().append(opcionDefault).prop("disabled", true); break;
+        case "departamento": $("#cdgoDep, #cdgoProv, #cdgoDist, #actas_ubigeo").empty().append(opcionDefault).prop("disabled", true);break;
         case "provincia": $("#cdgoProv, #cdgoDist, #actas_ubigeo").empty().append(opcionDefault).prop("disabled", true); break;
         case "distrito": $("#cdgoDist, #actas_ubigeo").empty().append(opcionDefault).prop("disabled", true); break;
         case "local": $("#actas_ubigeo").empty().append(opcionDefault).prop("disabled", true); break;
+        default: break;
     }
 }
 
@@ -124,6 +133,19 @@ function obtenerLocales() {
                 $("#actas_ubigeo").append($("<option>").val(elemento.id).text(elemento.detalle));
             });
             $("#actas_ubigeo").prop("disabled", false);
+        }
+    });
+}
+
+function obtenerGruposVotacion() {
+    var _id = $("#actas_ubigeo").val();
+    $.ajax({
+        url: "/Actas/_GruposVotacion",
+        type: "GET",
+        dataType: "html",
+        data: { id: _id },
+        success: function (htmlrecibido) {
+            $("#GruposVotacion").html(htmlrecibido);
         }
     });
 }
