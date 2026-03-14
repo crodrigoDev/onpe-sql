@@ -79,7 +79,7 @@
                                 <div class="col-md-3">
                                     <label class="control-label">Ámbito:</label>
                                     <div id="ambito" class="form-group">
-                                        <select name="cdgoAmbito" id="cdgoAmbito" class="form-control" onchange="obtenerDepartamentos()">
+                                        <select name="cdgoAmbito" id="cdgoAmbito" class="form-control">
                                             <option value="P">PERÚ</option>
                                             <option value="E">EXTRANJERO</option>
                                         </select>
@@ -88,9 +88,9 @@
 
                                 <div id="dvNombreDepartamento" class="col-md-3" style="">
                                     <div class="form-group">
-                                        <label id="lblDepartamento" class="control-label">Departamento:</label>
+                                        <label id="lblDepartamento" class="control-label"></label>
                                         <div id="departamentos">
-                                            <select name="cdgoDep" id="cdgoDep" class="form-control" onchange="obtenerProvincias()">
+                                            <select name="cdgoDep" id="cdgoDep" class="form-control">
                                             </select>
                                         </div>
                                     </div>
@@ -98,9 +98,9 @@
 
                                 <div id="dvNombreProvincia" class="col-md-3" style="">
                                     <div class="form-group">
-                                        <label id="lblProvincia" class="control-label">Provincia:</label>
+                                        <label id="lblProvincia" class="control-label"></label>
                                         <div id="provincias">
-                                            <select name="cdgoProv" id="cdgoProv" class="form-control" disabled onchange="obtenerDistritos()">
+                                            <select name="cdgoProv" id="cdgoProv" class="form-control" disabled>
                                             </select>
                                             <span id="aComentarioProvincia"></span>
                                         </div>
@@ -112,9 +112,9 @@
                             <div class="row">
 
                                 <div class="col-md-4">
-                                    <label id="lblDistrito" class="control-label">Distrito:</label>
+                                    <label id="lblDistrito" class="control-label"></label>
                                     <div id="distritos" class="form-group">
-                                        <select name="cdgoDist" id="cdgoDist" class="form-control" disabled onchange="obtenerLocales()">
+                                        <select name="cdgoDist" id="cdgoDist" class="form-control" disabled>
                                         </select>
                                     </div>
                                 </div>
@@ -143,108 +143,5 @@
 <br />
 
 @section Scripts {
-    <script>
-        $(document).ready(function(){
-            obtenerDepartamentos();
-            $("#cdgoAmbito").change(function () {
-                $("#cdgoProv, #cdgoDist, #actas_ubigeo").empty().append("<option value=''Seleccione</option>").prop("disabled", true);
-            });
-        })
-
-        function obtenerDepartamentos(){
-            var _ambito = $("#cdgoAmbito option:selected").val()
-            $.ajax({
-                url: "@Url.Action("verDepartamentos", "Actas")",
-                type: "GET",
-                dataType: "json",
-                data:{
-                    ambito: _ambito
-                },
-                success: function(response) {
-                    $("#cdgoDep").empty();
-                    $("#cdgoDep").append(
-                        $("<option>").attr({"value": ""}).text("Seleccione")
-                    )
-                    $.each(response,function(index, elemento){
-                        $("#cdgoDep").append(
-                            $("<option>").attr({"value": elemento.id}).text( elemento.detalle)
-                        )
-                    })
-                }
-            })
-        }
-
-        function obtenerProvincias(){
-            var _id = $("#cdgoDep option:selected").val()
-            $.ajax({
-                url: "@Url.Action("verProvincias", "Actas")",
-                type: "GET",
-                dataType: "json",
-                data:{
-                    id: _id
-                },
-                success: function(response) {
-                    $("#cdgoProv").empty();
-                    $("#cdgoProv").append(
-                        $("<option>").attr({"value": ""}).text("Seleccione")
-                    )
-                    $.each(response,function(index, elemento){
-                        $("#cdgoProv").append(
-                            $("<option>").attr({"value": elemento.id}).text( elemento.detalle)
-                        )
-                    })
-                    $("#cdgoProv").prop("disabled", false);
-                }
-            })
-        }
-
-        function obtenerDistritos(){
-            var _id = $("#cdgoProv option:selected").val()
-            $.ajax({
-                url: "@Url.Action("verDistritos", "Actas")",
-                type: "GET",
-                dataType: "json",
-                data:{
-                    id: _id
-                },
-                success: function(response) {
-                    $("#cdgoDist").empty();
-                    $("#cdgoDist").append(
-                        $("<option>").attr({"value": ""}).text("Seleccione")
-                    )
-                    $.each(response,function(index, elemento){
-                        $("#cdgoDist").append(
-                            $("<option>").attr({"value": elemento.id}).text( elemento.detalle)
-                        )
-                    })
-                    $("#cdgoDist").prop("disabled", false);
-                }
-            })
-        }
-        function obtenerLocales(){
-            var _id = $("#cdgoDist option:selected").val()
-            $.ajax({
-                url: "@Url.Action("verLocales", "Actas")",
-                type: "GET",
-                dataType: "json",
-                data:{
-                    id: _id
-                },
-                success: function(response) {
-                    $("#actas_ubigeo").empty();
-                    $("#actas_ubigeo").append(
-                        $("<option>").attr({"value": ""}).text("Seleccione")
-                    )
-                    $.each(response,function(index, elemento){
-                        $("#actas_ubigeo").append(
-                            $("<option>").attr({"value": elemento.id}).text( elemento.detalle)
-                        )
-                    })
-                    $("#actas_ubigeo").prop("disabled", false);
-                }
-            })
-        }
-
-
-    </script>
+    <script src="~/js/actas-ubigeo.js"></script>
 }
