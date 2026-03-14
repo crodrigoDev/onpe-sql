@@ -40,7 +40,7 @@
                 <div class="menu-interna">
                     <ul>
                         <li><a href='@Url.Action("verActasUbigeo", "Actas")' class="act-izq">Actas por ubigeo</a></li>
-                        <li><a href="./actas_numero.html">Actas por número</a></li>
+                        <li><a href='@Url.Action("verActasNumero", "Actas")' class="act-izq">Actas por número</a></li>
                     </ul>
                 </div>
             </div>
@@ -132,6 +132,10 @@
                                 <div id="GruposVotacion" class="ptop20">
 
                                 </div>
+
+                                <div id="ActaDetalle" class="ptop20">
+
+                                </div>
                             </div>
 
                         </form>
@@ -149,4 +153,44 @@
 
 @section Scripts {
     <script src="~/js/actas-ubigeo.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#cdgoAmbito, #cdgoDep, #cdgoProv, #cdgoDist, #actas_ubigeo").change(function() {
+                limpiar();
+            });
+
+        });
+        function obtenerActaDetalle(_id) {
+            $.ajax({
+                url: '@Url.Action("_ActaDetalle", "Actas")',
+                type: "GET",
+                dataType: "html",
+                data: { id: _id },
+                success: function (htmlrecibido) {
+                    $("#GruposVotacion").hide();
+                    $("#ActaDetalle").html(htmlrecibido).show();
+                    var ambitoInicial = $("#cdgoAmbito").val();
+                    actualizarLbl(ambitoInicial);
+                }
+            });
+        }
+
+        function limpiar(){
+            $("#ActaDetalle").empty().hide();
+            $("#GruposVotacion").show();
+        }
+
+        function actualizarLbl(valor) {
+            if (valor === "P") {
+                $("#lbldep").text("DEPARTAMENTO");
+                $("#lblprov").text("PROVINCIA");
+                $("#lbldis").text("DISTRITO");
+            } else {
+                $("#lbldep").text("CONTINENTE");
+                $("#lblprov").text("PAÍS");
+                $("#lbldis").text("CIUDAD");
+            }
+        }
+    </script>    
+    
 }

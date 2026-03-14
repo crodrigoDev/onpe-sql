@@ -58,7 +58,7 @@ function actualizarLabels(valor) {
 function limpiarDesde(nivel) {
     const opcionDefault = "<option value=''>--SELECCIONE--</option>";
     $("#GruposVotacion").empty();
-    switch (nivel){
+    switch (nivel) {
         case "departamento": $("#cdgoDep, #cdgoProv, #cdgoDist, #actas_ubigeo").empty().append(opcionDefault).prop("disabled", true);break;
         case "provincia": $("#cdgoProv, #cdgoDist, #actas_ubigeo").empty().append(opcionDefault).prop("disabled", true); break;
         case "distrito": $("#cdgoDist, #actas_ubigeo").empty().append(opcionDefault).prop("disabled", true); break;

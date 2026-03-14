@@ -18,7 +18,7 @@ namespace onpe_sql.Models
             setRegistro(aRegistro);
         }
 
-        private void setRegistro(string[] aRegistro)
+        internal void setRegistro(string[] aRegistro)
         {
 
             detalle = aRegistro[0];

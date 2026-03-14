@@ -12,7 +12,7 @@
                 <tr>
                     @foreach (var mesa in filaDeMesas)
                     {
-                        <td bgcolor="#C1C1C1" onclick="verDetalleMesa('@mesa.id')" style="cursor:pointer">
+                            <td bgcolor="#C1C1C1" onclick="obtenerActaDetalle('@mesa.id')" style="cursor:pointer">
                             <a href="#">@mesa.id</a>
                         </td>
                     }

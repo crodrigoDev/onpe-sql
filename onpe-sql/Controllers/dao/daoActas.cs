@@ -12,6 +12,14 @@ namespace onpe_sql.Controllers.dao
             _db = db;
         }
 
+        internal ActaDetalle getDetalle(string id)
+        {
+            _db.Sentencia($"EXEC usp_getGrupoVotacion '{id}'");
+            ActaDetalle acta = new();
+            acta.setRegistro(_db.getRegistro());
+            return acta;
+        }
+
         internal List<GruposVotacion> getGrupos(int id)
         {
             _db.Sentencia($"EXEC usp_getGruposVotacion {id}");

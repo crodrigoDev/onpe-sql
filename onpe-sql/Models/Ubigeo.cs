@@ -12,7 +12,7 @@
             setRegistro(aRegistro);
         }
 
-        private void setRegistro(string[] aRegistro)
+        internal void setRegistro(string[] aRegistro)
         {
             id = int.Parse(aRegistro[0]);
             detalle = aRegistro[1];

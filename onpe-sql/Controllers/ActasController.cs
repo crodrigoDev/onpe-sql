@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using onpe_sql.Controllers.dao;
 using onpe_sql.Models;
+using System.Reflection;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace onpe_sql.Controllers
@@ -48,6 +49,18 @@ namespace onpe_sql.Controllers
         {
             var lista = _daoA.getGrupos(id);
             return PartialView("_GruposVotacion",lista);
+        }
+
+        public IActionResult _ActaDetalle(string id)
+        {
+            var lista = _daoA.getDetalle(id);
+            ViewBag.Estado = (lista.idEstado == 1 ? "ACTA ELECTORAL NORMAL" : "ACTA ELECTORAL RESUELTA");
+            ViewBag.TotalVotos = lista.VB + lista.VI + lista.VN;
+            return PartialView("_ActaDetalle", lista);
+        }
+        public IActionResult verActasNumero()
+        {
+            return View();
         }
     }
 }
